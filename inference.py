@@ -1,6 +1,7 @@
 import pandas as pd
 import torch
 from kobart import get_kobart_tokenizer
+from transformers import PreTrainedTokenizerFast
 from transformers.models.bart import BartForConditionalGeneration
 
 
@@ -12,7 +13,8 @@ test_text = test_data["text"]
 summary = []
 
 model = BartForConditionalGeneration.from_pretrained("kobart_summary")
-tokenizer = get_kobart_tokenizer()
+# tokenizer = get_kobart_tokenizer()
+tokenizer = PreTrainedTokenizerFast.from_pretrained("gogamza/kobart-summarization")
 
 
 def text2summary(text):
